@@ -1,30 +1,55 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 
 interface ModalShellProps {
   open: boolean
   onClose: () => void
   title: string
-  children: React.ReactNode
+  children: ReactNode
   wide?: boolean
 }
 
+const TITLE_ID = 'modal-title'
+
 export default function ModalShell({ open, onClose, title, children, wide = false }: ModalShellProps) {
+  const panelRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    const handler = (e: KeyboardEvent) => { if (open && e.key === 'Escape') onClose() }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [onClose])
+  }, [open, onClose])
+
+  // Basic focus trap
+  useEffect(() => {
+    if (!open) return
+    const panel = panelRef.current
+    if (!panel) return
+
+    const focusable = panel.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )
+    focusable[0]?.focus()
+
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus() }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus() }
+      }
+    }
+    window.addEventListener('keydown', trap)
+    return () => window.removeEventListener('keydown', trap)
+  }, [open])
 
   return (
     <AnimatePresence>
@@ -45,21 +70,26 @@ export default function ModalShell({ open, onClose, title, children, wide = fals
 
           {/* Panel */}
           <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={TITLE_ID}
+            key="modal-panel"
             className={`relative liquid-glass-strong rounded-3xl w-full ${wide ? 'max-w-2xl' : 'max-w-xl'} max-h-[85vh] flex flex-col`}
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            initial={{ opacity: 0, scale: 0.95, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            exit={{ opacity: 0, scale: 0.95, y: 8 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 pb-4 shrink-0">
-              <h2 className="text-white font-display font-medium text-lg">{title}</h2>
+              <h2 id={TITLE_ID} className="text-white font-display font-medium text-xl">{title}</h2>
               <button
                 onClick={onClose}
                 aria-label="Close"
                 className="liquid-glass w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:scale-105 transition-all"
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
 
