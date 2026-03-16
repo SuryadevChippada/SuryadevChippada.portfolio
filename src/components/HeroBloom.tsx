@@ -88,9 +88,9 @@ function HeroCenter({ openModal }: { openModal: (t: ModalType) => void }) {
 
       <div>
         <h1 className="text-6xl lg:text-7xl font-medium font-display text-white tracking-[-0.05em] leading-tight">
-          Building<br />
-          <em className="font-serif not-italic italic text-white/80">intelligent</em><br />
-          systems.
+          Vision<br />
+          <em className="font-serif not-italic italic text-white/80">meets</em><br />
+          the real world.
         </h1>
         <p className="text-white/50 text-sm mt-3 font-display">
           CS student · TU Darmstadt · Computer Vision & AI
@@ -108,7 +108,7 @@ function HeroCenter({ openModal }: { openModal: (t: ModalType) => void }) {
       </button>
 
       <div className="flex flex-wrap gap-2 justify-center">
-        {['Computer Vision', 'AI Systems', 'Edge Inference', 'Full-Stack'].map((tag) => (
+        {['Computer Vision', 'AI Systems', 'Full-Stack'].map((tag) => (
           <span key={tag} className="liquid-glass rounded-full px-4 py-1.5 text-xs text-white/80">
             {tag}
           </span>
@@ -121,9 +121,9 @@ function HeroCenter({ openModal }: { openModal: (t: ModalType) => void }) {
 function BottomQuote() {
   return (
     <div className="px-6 pb-6 flex flex-col items-center gap-3 text-center">
-      <p className="text-xs tracking-widest uppercase text-white/50">Visionary Engineering</p>
+      <p className="text-xs tracking-widest uppercase text-white/50">Philosophy</p>
       <p className="text-sm text-white/80 font-display">
-        &ldquo;We built where <em className="font-serif italic text-white/60">code meets</em> the physical world.&rdquo;
+        &ldquo;Closing the gap between <em className="font-serif italic text-white/60">AI research</em> and the real world.&rdquo;
       </p>
       <div className="flex items-center gap-3">
         <div className="h-px w-12 bg-white/20" />
