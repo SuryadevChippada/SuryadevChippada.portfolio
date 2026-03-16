@@ -1,5 +1,5 @@
 import ModalShell from './ModalShell'
-import { GraduationCap, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 
 interface Props { open: boolean; onClose: () => void }
 
@@ -15,9 +15,11 @@ export default function EducationModal({ open, onClose }: Props) {
     <ModalShell open={open} onClose={onClose} title="Education & Certifications">
       <div className="liquid-glass rounded-2xl p-4 mb-6">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
-            <GraduationCap className="w-4 h-4 text-white" aria-hidden="true" />
-          </div>
+          <img
+            src="/tu-logo.png"
+            alt="TU Darmstadt"
+            className="w-10 h-10 rounded-lg object-contain invert opacity-70 shrink-0 mt-0.5"
+          />
           <div>
             <p className="text-white font-medium text-sm">TU Darmstadt</p>
             <p className="text-white/60 text-xs mt-0.5">BSc Computer Science</p>
