@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Linkedin, Mail, Menu, Download, Zap, Code2, ArrowRight, Sparkles, ArrowUpRight } from 'lucide-react'
+import { Github, Linkedin, Mail, Menu, Download, Zap, Code2, ArrowRight, ArrowUpRight } from 'lucide-react'
 import FlareModal from './modals/FlareModal'
 import StackModal from './modals/StackModal'
 import EducationModal from './modals/EducationModal'
@@ -104,7 +104,7 @@ function HeroCenter({ openModal }: { openModal: (t: ModalType) => void }) {
         <span className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center">
           <Download className="w-4 h-4" aria-hidden="true" />
         </span>
-        Download CV
+        Resume
       </button>
 
       <div className="flex flex-wrap gap-2 justify-center">
@@ -167,14 +167,6 @@ function RightTopBar({ openModal }: { openModal: (t: ModalType) => void }) {
         <ArrowRight className="w-4 h-4 text-white/50" aria-hidden="true" />
       </div>
 
-      <button
-        onClick={() => openModal('cv')}
-        aria-label="View Resume"
-        className="liquid-glass rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs hover:scale-105 transition-transform"
-      >
-        <Sparkles className="w-4 h-4" aria-hidden="true" />
-        <span>Resume</span>
-      </button>
     </div>
   )
 }

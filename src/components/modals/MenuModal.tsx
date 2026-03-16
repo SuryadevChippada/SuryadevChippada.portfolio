@@ -10,11 +10,11 @@ interface Props {
 }
 
 const NAV_ITEMS = [
-  { icon: User,          label: 'About me',      modal: 'contact'   as ModalType },
-  { icon: Zap,           label: 'FLARE Project',  modal: 'flare'     as ModalType },
-  { icon: Code2,         label: 'Tech Stack',     modal: 'stack'     as ModalType },
-  { icon: GraduationCap, label: 'Education',      modal: 'education' as ModalType },
-  { icon: FileText,      label: 'View CV',        modal: 'cv'        as ModalType },
+  { icon: User,          label: 'About me',      modal: 'contact'   as ModalType, href: null },
+  { icon: Zap,           label: 'FLARE Project',  modal: 'flare'     as ModalType, href: null },
+  { icon: Code2,         label: 'Tech Stack',     modal: 'stack'     as ModalType, href: null },
+  { icon: GraduationCap, label: 'Education',      modal: 'education' as ModalType, href: null },
+  { icon: FileText,      label: 'View CV',        modal: null,                     href: '/cv.pdf' },
 ]
 
 export default function MenuModal({ open, onClose, openModal }: Props) {
