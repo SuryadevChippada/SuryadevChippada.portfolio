@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Linkedin, Mail, Menu, Download, Zap, Code2, ArrowRight, Sparkles } from 'lucide-react'
+import { Github, Linkedin, Mail, Menu, Download, Zap, Code2, ArrowRight, Sparkles, ArrowUpRight } from 'lucide-react'
 import FlareModal from './modals/FlareModal'
 import StackModal from './modals/StackModal'
 import EducationModal from './modals/EducationModal'
@@ -207,6 +207,7 @@ function FeatureSection({ openModal }: { openModal: (t: ModalType) => void }) {
           </div>
           <p className="text-white text-xs font-medium">FLARE</p>
           <p className="text-white/60 text-xs mt-1 leading-relaxed">Wildfire CV system on edge hardware. YOLO-based detection.</p>
+          <span className="text-white/30 text-[9px] mt-2 flex items-center gap-0.5">View details <ArrowUpRight className="w-2.5 h-2.5" /></span>
         </button>
 
         <button
@@ -217,25 +218,29 @@ function FeatureSection({ openModal }: { openModal: (t: ModalType) => void }) {
           <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mb-3">
             <Code2 className="w-4 h-4 text-white" aria-hidden="true" />
           </div>
-          <p className="text-white text-xs font-medium">Tech Stack</p>
-          <p className="text-white/60 text-xs mt-1 leading-relaxed">Python · YOLO · React · OpenCV · PyTorch</p>
+          <p className="text-white text-xs font-medium mb-2">Tech Stack</p>
+          <div className="flex flex-wrap gap-1">
+            {['Python','YOLO','React','OpenCV','PyTorch','TensorFlow','n8n','Angular','Git','Neo4j','Raspberry Pi','Java'].map(t => (
+              <span key={t} className="liquid-glass rounded-full px-2 py-0.5 text-[10px] text-white/70">{t}</span>
+            ))}
+          </div>
+          <span className="text-white/30 text-[9px] mt-2 flex items-center gap-0.5">View full stack <ArrowUpRight className="w-2.5 h-2.5" /></span>
         </button>
       </div>
 
-      <div className="liquid-glass rounded-3xl p-4 flex gap-3 items-start">
+      <button
+        onClick={() => openModal('education')}
+        aria-label="View education details"
+        className="liquid-glass rounded-3xl p-4 flex gap-3 items-center w-full text-left cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-transform"
+      >
         <div className="w-24 h-16 rounded-xl bg-white/10 shrink-0" />
         <div className="flex-1">
           <p className="text-white text-xs font-medium">TU Darmstadt</p>
           <p className="text-white/60 text-xs mt-1 leading-relaxed">BSc Computer Science · Oct 2023–Present</p>
+          <span className="text-white/30 text-[9px] mt-1.5 flex items-center gap-0.5">View education <ArrowUpRight className="w-2.5 h-2.5" /></span>
         </div>
-        <button
-          onClick={() => openModal('education')}
-          aria-label="View education details"
-          className="liquid-glass w-7 h-7 rounded-full flex items-center justify-center text-white text-sm hover:scale-105 transition-transform shrink-0"
-        >
-          +
-        </button>
-      </div>
+        <ArrowUpRight className="w-4 h-4 text-white/20 shrink-0" aria-hidden="true" />
+      </button>
     </div>
   )
 }

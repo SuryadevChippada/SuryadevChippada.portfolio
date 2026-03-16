@@ -10,7 +10,7 @@ export default function CVModal({ open, onClose }: Props) {
         <iframe
           src="/cv.pdf"
           title="Suryadev Chippada CV"
-          sandbox="allow-scripts"
+          sandbox="allow-scripts allow-same-origin"
           className="w-full"
           style={{ height: '60vh' }}
         />
