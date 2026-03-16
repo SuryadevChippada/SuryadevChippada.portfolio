@@ -5,8 +5,9 @@ export default {
     extend: {
       fontFamily: {
         mono: ['"JetBrains Mono"', 'monospace'],
-        display: ['Poppins', 'sans-serif'],
-        serif: ['"Source Serif 4"', 'serif'],
+        display: ['"JetBrains Mono"', 'monospace'],
+        serif: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
         bg: '#2A2725',
