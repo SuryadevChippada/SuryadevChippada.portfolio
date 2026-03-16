@@ -14,6 +14,7 @@ export default function HeroBloom() {
         muted
         loop
         playsInline
+        aria-hidden="true"
       />
 
       {/* Dark overlay to ensure text readability */}
@@ -54,8 +55,8 @@ function LeftNav() {
         </div>
         <span className="text-white font-semibold text-2xl tracking-tighter">suryadev</span>
       </div>
-      <button className="liquid-glass rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs hover:scale-105 transition-transform">
-        <Menu className="w-4 h-4" />
+      <button aria-label="Open navigation menu" className="liquid-glass rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs hover:scale-105 transition-transform">
+        <Menu className="w-4 h-4" aria-hidden="true" />
         <span>Menu</span>
       </button>
     </nav>
@@ -137,18 +138,19 @@ function RightTopBar() {
       {/* Social icons pill */}
       <div className="liquid-glass rounded-full px-4 py-2 flex items-center gap-3">
         {[
-          { icon: Github, href: 'https://github.com/SuryadevChippada' },
-          { icon: Linkedin, href: 'https://www.linkedin.com/in/suryadev-chippada' },
-          { icon: Mail, href: 'mailto:chippadasurya8@gmail.com' },
-        ].map(({ icon: Icon, href }) => (
+          { icon: Github, href: 'https://github.com/SuryadevChippada', label: 'GitHub' },
+          { icon: Linkedin, href: 'https://www.linkedin.com/in/suryadev-chippada', label: 'LinkedIn' },
+          { icon: Mail, href: 'mailto:chippadasurya8@gmail.com', label: 'Email' },
+        ].map(({ icon: Icon, href, label }) => (
           <a
             key={href}
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:text-white/80 transition-colors"
+            aria-label={label}
+            className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:text-white/80 hover:scale-105 transition-all"
           >
-            <Icon className="w-4 h-4" />
+            <Icon className="w-4 h-4" aria-hidden="true" />
           </a>
         ))}
         <ArrowRight className="w-4 h-4 text-white/50" />
@@ -209,7 +211,7 @@ function FeatureSection() {
           <p className="text-white text-xs font-medium">TU Darmstadt</p>
           <p className="text-white/60 text-xs mt-1 leading-relaxed">BSc Computer Science · Oct 2023–Present</p>
         </div>
-        <button className="liquid-glass w-7 h-7 rounded-full flex items-center justify-center text-white text-sm hover:scale-105 transition-transform shrink-0">
+        <button aria-label="View TU Darmstadt details" className="liquid-glass w-7 h-7 rounded-full flex items-center justify-center text-white text-sm hover:scale-105 transition-transform shrink-0">
           +
         </button>
       </div>
