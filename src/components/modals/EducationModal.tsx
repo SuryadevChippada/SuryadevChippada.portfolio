@@ -15,11 +15,9 @@ export default function EducationModal({ open, onClose }: Props) {
     <ModalShell open={open} onClose={onClose} title="Education & Certifications">
       <div className="liquid-glass rounded-2xl p-4 mb-6">
         <div className="flex items-start gap-3">
-          <img
-            src="/tu-logo.png"
-            alt="TU Darmstadt"
-            className="w-10 h-10 rounded-lg object-contain invert opacity-70 shrink-0 mt-0.5"
-          />
+          <div className="w-10 h-10 rounded-lg liquid-glass flex items-center justify-center shrink-0 mt-0.5">
+            <span className="text-white/80 font-serif font-medium text-sm tracking-wider">TUD</span>
+          </div>
           <div>
             <p className="text-white font-medium text-sm">TU Darmstadt</p>
             <p className="text-white/60 text-xs mt-0.5">BSc Computer Science</p>

@@ -233,11 +233,9 @@ function FeatureSection({ openModal }: { openModal: (t: ModalType) => void }) {
         aria-label="View education details"
         className="liquid-glass rounded-3xl p-4 flex gap-3 items-center w-full text-left cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-transform"
       >
-        <img
-          src="/tu-logo.png"
-          alt="TU Darmstadt"
-          className="w-24 h-16 rounded-xl object-contain invert opacity-70 shrink-0"
-        />
+        <div className="w-24 h-16 rounded-xl liquid-glass flex items-center justify-center shrink-0">
+          <span className="text-white/80 font-serif font-medium text-xl tracking-widest">TUD</span>
+        </div>
         <div className="flex-1">
           <p className="text-white text-xs font-medium">TU Darmstadt</p>
           <p className="text-white/60 text-xs mt-1 leading-relaxed">BSc Computer Science · Oct 2023–Present</p>
