@@ -82,8 +82,8 @@ function LeftNav({ openModal }: { openModal: (t: ModalType) => void }) {
 function HeroCenter({ openModal }: { openModal: (t: ModalType) => void }) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-5 py-12 px-4 text-center">
-      <div className="w-20 h-20 rounded-full bg-white/15 flex items-center justify-center">
-        <span className="text-white text-2xl font-semibold">SC</span>
+      <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-white/20">
+        <img src="/avatar.jpg" alt="Suryadev Chippada" className="w-full h-full object-cover" />
       </div>
 
       <div>
