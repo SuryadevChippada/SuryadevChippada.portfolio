@@ -7,7 +7,7 @@ const CERTS = [
   'Machine Learning & Deep Learning — Udemy (2025)',
   'Web Development — Udemy (2025)',
   'Python for Game Programming: Pygame — Udemy (2025)',
-  'Claude Code in Action — Anthropic (2026)',
+
 ]
 
 export default function EducationModal({ open, onClose }: Props) {

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ArrowRight, Zap, Code2, GraduationCap, FileText, User } from 'lucide-react'
+import { X, ArrowRight, Zap, Code2, GraduationCap, FileText, Award } from 'lucide-react'
 import { useEffect } from 'react'
 import type { ModalType } from './types'
 
@@ -10,10 +10,10 @@ interface Props {
 }
 
 const NAV_ITEMS = [
-  { icon: User,          label: 'About me',      modal: 'contact'   as ModalType, href: null },
-  { icon: Zap,           label: 'FLARE Project',  modal: 'flare'     as ModalType, href: null },
-  { icon: Code2,         label: 'Tech Stack',     modal: 'stack'     as ModalType, href: null },
+  { icon: Zap,           label: 'FLARE Project', modal: 'flare'     as ModalType, href: null },
+  { icon: Code2,         label: 'Tech Stack',    modal: 'stack'     as ModalType, href: null },
   { icon: GraduationCap, label: 'Education',      modal: 'education' as ModalType, href: null },
+  { icon: Award,         label: 'Certifications', modal: 'certs'     as ModalType, href: null },
   { icon: FileText,      label: 'View CV',        modal: null,                     href: '/cv.pdf' },
 ]
 
@@ -67,19 +67,27 @@ export default function MenuModal({ open, onClose, openModal }: Props) {
 
             {/* Nav items */}
             <div className="p-2">
-              {NAV_ITEMS.map(({ icon: Icon, label, modal }) => (
-                <button
-                  key={label}
-                  onClick={() => { onClose(); setTimeout(() => openModal(modal), 150) }}
-                  className="w-full rounded-xl px-3 py-2.5 flex items-center gap-3 text-left hover:bg-white/10 active:bg-white/5 transition-colors group"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 transition-colors">
-                    <Icon className="w-3.5 h-3.5 text-white/70" aria-hidden="true" />
-                  </div>
-                  <span className="text-white/80 text-sm flex-1">{label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-white/20 group-hover:text-white/50 transition-colors" aria-hidden="true" />
-                </button>
-              ))}
+              {NAV_ITEMS.map(({ icon: Icon, label, modal, href }) => {
+                const cls = "w-full rounded-xl px-3 py-2.5 flex items-center gap-3 text-left hover:bg-white/10 active:bg-white/5 transition-colors group"
+                const inner = (
+                  <>
+                    <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 transition-colors">
+                      <Icon className="w-3.5 h-3.5 text-white/70" aria-hidden="true" />
+                    </div>
+                    <span className="text-white/80 text-sm flex-1">{label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white/20 group-hover:text-white/50 transition-colors" aria-hidden="true" />
+                  </>
+                )
+                return href ? (
+                  <a key={label} href={href} target="_blank" rel="noreferrer" onClick={onClose} className={cls}>
+                    {inner}
+                  </a>
+                ) : (
+                  <button key={label} onClick={() => { onClose(); setTimeout(() => openModal(modal), 150) }} className={cls}>
+                    {inner}
+                  </button>
+                )
+              })}
             </div>
 
             {/* Footer hint */}

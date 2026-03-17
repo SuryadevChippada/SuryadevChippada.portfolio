@@ -8,11 +8,12 @@ interface ModalShellProps {
   title: string
   children: ReactNode
   wide?: boolean
+  headerAction?: ReactNode
 }
 
 const TITLE_ID = 'modal-title'
 
-export default function ModalShell({ open, onClose, title, children, wide = false }: ModalShellProps) {
+export default function ModalShell({ open, onClose, title, children, wide = false, headerAction }: ModalShellProps) {
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -84,13 +85,16 @@ export default function ModalShell({ open, onClose, title, children, wide = fals
             {/* Header */}
             <div className="flex items-center justify-between p-6 pb-4 shrink-0">
               <h2 id={TITLE_ID} className="text-white font-display font-medium text-xl">{title}</h2>
-              <button
-                onClick={onClose}
-                aria-label="Close"
-                className="liquid-glass w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:scale-105 transition-all"
-              >
-                <X className="w-4 h-4" aria-hidden="true" />
-              </button>
+              <div className="flex items-center gap-2">
+                {headerAction}
+                <button
+                  onClick={onClose}
+                  aria-label="Close"
+                  className="liquid-glass w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:scale-105 transition-all"
+                >
+                  <X className="w-4 h-4" aria-hidden="true" />
+                </button>
+              </div>
             </div>
 
             {/* Scrollable body */}
