@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Linkedin, Mail, FileText, Zap, Code2, ArrowUpRight, Award } from 'lucide-react'
+import { Github, Linkedin, Mail, FileText, Zap, Code2, ArrowUpRight } from 'lucide-react'
 import FlareModal from './modals/FlareModal'
 import StackModal from './modals/StackModal'
 import EducationModal from './modals/EducationModal'
