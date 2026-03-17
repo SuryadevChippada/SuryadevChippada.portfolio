@@ -137,14 +137,14 @@ function BottomQuote() {
 function RightPanel({ openModal }: { openModal: (t: ModalType) => void }) {
   return (
     <div className="hidden lg:flex w-[48%] flex-col p-6 gap-4">
-      <RightTopBar openModal={openModal} />
+      <RightTopBar />
       <CommunityCard openModal={openModal} />
       <FeatureSection openModal={openModal} />
     </div>
   )
 }
 
-function RightTopBar({ openModal }: { openModal: (t: ModalType) => void }) {
+function RightTopBar() {
   return (
     <div className="flex items-center justify-between">
       <div className="liquid-glass rounded-full px-4 py-2 flex items-center gap-3">
