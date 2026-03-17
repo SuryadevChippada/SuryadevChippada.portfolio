@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React, TypeScript, and Tailwind CSS.
 
-**Live:** [suryadevchippada.vercel.app](https://suryadevchippada.vercel.app)
+**Live:** [suryadevchippada.vercel.app]([https://suryadevchippada.vercel.app](https://suryadev-chippada-portfolio.vercel.app))
 
 ## Tech Stack
 
